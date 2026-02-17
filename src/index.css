@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 3.5%;
+    --foreground: 240 10% 96%;
+
+    --card: 240 18% 6.5%;
+    --card-foreground: 240 10% 96%;
+
+    --popover: 240 18% 6.5%;
+    --popover-foreground: 240 10% 96%;
+
+    --primary: 18 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 12% 12%;
+    --secondary-foreground: 240 10% 96%;
+
+    --muted: 240 10% 14%;
+    --muted-foreground: 240 8% 52%;
+
+    --accent: 240 10% 14%;
+    --accent-foreground: 240 10% 96%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 8% 14%;
+    --input: 240 8% 14%;
+    --ring: 18 100% 55%;
+
+    --radius: 0.875rem;
+
+    /* FlowDesk custom tokens */
+    --fd-accent: 18 100% 55%;
+    --fd-accent-hover: 18 90% 47%;
+    --fd-accent-glow: 18 100% 55%;
+    --fd-green: 142 71% 45%;
+    --fd-blue: 217 91% 60%;
+    --fd-yellow: 38 92% 50%;
+    --fd-purple: 270 67% 65%;
+    --fd-red: 0 84% 60%;
+
+    --fd-bg: 240 20% 3.5%;
+    --fd-bg2: 240 18% 6.5%;
+    --fd-bg3: 240 14% 12%;
+    --fd-bg4: 240 12% 16%;
+    --fd-glass: 240 18% 6.5%;
+    --fd-sidebar: 240 20% 4.5%;
+
+    --fd-text: 240 10% 96%;
+    --fd-text2: 240 10% 68%;
+    --fd-text3: 240 8% 42%;
+
+    --sidebar-background: 240 20% 4.5%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 18 100% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 10% 14%;
+    --sidebar-accent-foreground: 240 10% 96%;
+    --sidebar-border: 240 8% 14%;
+    --sidebar-ring: 18 100% 55%;
+
+    --fd-transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    --fd-shadow-sm: 0 2px 8px rgba(0,0,0,0.12);
+    --fd-shadow-md: 0 8px 24px rgba(0,0,0,0.18);
+    --fd-shadow-lg: 0 20px 48px rgba(0,0,0,0.28);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.3); }
+
+/* Font classes */
+.font-display { font-family: 'Syne', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-body { font-family: 'Outfit', sans-serif; }
+
+/* Animations */
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+@keyframes fab-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+.animate-stagger { animation: stagger-in 0.4s ease forwards; }
+.animate-typing-1 { animation: typing-bounce 1.2s infinite; }
+.animate-typing-2 { animation: typing-bounce 1.2s infinite 0.2s; }
+.animate-typing-3 { animation: typing-bounce 1.2s infinite 0.4s; }
+.animate-fab-pulse { animation: fab-pulse 2s infinite; }
+
+/* Radial glow on dark bg */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, hsl(var(--fd-accent) / 0.08), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
